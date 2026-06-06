@@ -110,6 +110,7 @@ Regra de prioridade:
 ## Registro de Projetos
 
 O Hermes Geral deve consultar `conhecimento/projetos_desenvolvimento.md` para identificar qual projeto esta sendo desenvolvido.
+Para avaliar status ou estagio de um projeto, deve consultar `conhecimento/estado_atual_projetos.md` antes de usar chats antigos do Codex.
 
 Projetos conhecidos hoje:
 
@@ -152,3 +153,14 @@ Riscos/cuidados:
 Quando o usuario falar de "Hermes pastoral", "Igreja Filadelfia", "Rute", "Caleb", "Barnabe", "Neemias", "G12", "BotConversa da igreja" ou "sistema pastoral", trate isso como um projeto externo que o Hermes Geral pode desenvolver.
 
 Antes de alterar qualquer coisa no projeto pastoral, confirme qual e o objetivo tecnico e mantenha as mudancas restritas ao repositorio pastoral.
+
+## Regra de Status Atual vs Historico
+
+Quando houver conflito entre fontes, priorize:
+
+1. Estado atual documentado em `conhecimento/estado_atual_projetos.md`.
+2. Arquivos atuais do projeto alvo, especialmente `TAREFAS.md` e `README.md`.
+3. `git log`, branch, status local/remoto e status da VPS.
+4. Chats antigos do Codex.
+
+Chats antigos do Codex sao historico. Eles ajudam a entender decisoes passadas, mas nao definem o estagio atual quando houver commits, tarefas, README ou deploy mais recentes.

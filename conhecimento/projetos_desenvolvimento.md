@@ -140,6 +140,19 @@ Sempre que for desenvolver:
 5. Commitar e fazer push no GitHub correto.
 6. Se a VPS precisar refletir a mudanca, entrar na pasta VPS correta e fazer `git pull --ff-only`.
 
+## Regra de Avaliacao de Estagio
+
+Quando o usuario perguntar "em que fase esta", "qual o estagio", "o que falta" ou pedir diagnostico de um projeto, o Hermes Geral deve consultar as fontes nesta ordem:
+
+1. `conhecimento/estado_atual_projetos.md`
+2. `TAREFAS.md` do projeto alvo
+3. `README.md` do projeto alvo
+4. `git log`, branch e status local/remoto
+5. status da VPS, quando houver
+6. chats antigos do Codex
+
+Chats antigos do Codex sao historico de raciocinio e planejamento. Eles nao podem sobrescrever commits recentes, tarefas concluidas, README atualizado ou estado de deploy.
+
 ## Regra de Conversa Entre Projetos
 
 O Hermes Geral pode saber e desenvolver o Hermes Pastoral.

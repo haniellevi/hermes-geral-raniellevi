@@ -63,6 +63,14 @@ class HermesGeralRoutingTest(unittest.TestCase):
         text = read_knowledge("codex hermes")
         self.assertIn("Hermes Geral", text)
 
+    def test_system_prompt_prioritizes_current_project_status(self):
+        from app.llm import build_system_prompt
+
+        prompt = build_system_prompt("qual o estagio do hermes pastoral?")
+        self.assertIn("estado atual documentado", prompt.lower())
+        self.assertIn("Chats antigos do Codex sao historico", prompt)
+        self.assertIn("Hermes Pastoral 2.0 MVP concluido", prompt)
+
 
 if __name__ == "__main__":
     unittest.main()
