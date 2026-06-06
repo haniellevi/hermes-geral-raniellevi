@@ -71,6 +71,25 @@ class HermesGeralRoutingTest(unittest.TestCase):
         self.assertIn("Chats antigos do Codex sao historico", prompt)
         self.assertIn("Hermes Pastoral 2.0 MVP concluido", prompt)
 
+    def test_parse_codex_request_for_allowed_project(self):
+        from app.local_codex import parse_codex_request
+
+        request = parse_codex_request("/codex hermes-pastoral | rode os testes")
+        self.assertEqual(request.project, "hermes-pastoral")
+        self.assertIn("HERMES-LOCAL", request.workdir)
+        self.assertEqual(request.prompt, "rode os testes")
+
+    def test_parse_codex_request_blocks_unknown_project(self):
+        from app.local_codex import parse_codex_request
+
+        with self.assertRaises(ValueError):
+            parse_codex_request("/codex sistema-qualquer | rode algo")
+
+    def test_codex_command_resolves_command_name(self):
+        from app.local_codex import codex_command
+
+        self.assertTrue(codex_command())
+
 
 if __name__ == "__main__":
     unittest.main()

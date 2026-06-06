@@ -9,6 +9,7 @@ from typing import Any
 
 from .config import env, is_allowed_telegram_chat
 from .db import save_message
+from .local_codex import parse_codex_request, run_codex
 from .llm import generate_response
 
 
@@ -79,6 +80,12 @@ def handle_update(update: dict[str, Any]) -> None:
             "Hermes Geral Desenvolvedor online. "
             f"Seu chat_id e {chat_id}. Use esse ID em TELEGRAM_ALLOWED_CHAT_IDS para restringir o acesso."
         )
+    elif text.strip().lower().startswith("/codex"):
+        try:
+            codex_request = parse_codex_request(text)
+            resposta = run_codex(codex_request) if codex_request else "Pedido Codex vazio."
+        except Exception as exc:
+            resposta = f"Erro ao executar Codex local: {exc}"
     else:
         resposta = generate_response(text)
 
