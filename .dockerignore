@@ -5,4 +5,5 @@ __pycache__
 .venv
 venv
 database
+conhecimento/codex_chats
 *.log
