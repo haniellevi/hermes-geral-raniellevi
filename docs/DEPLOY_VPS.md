@@ -40,7 +40,8 @@ Copie `.env.example` para `.env` e configure:
 HERMES_GERAL_OWNER_PHONES=89994315927,5589994315927
 HERMES_GERAL_DB_PATH=database/hermes_geral.db
 OPENAI_API_KEY=
-OPENAI_MODEL=gpt-4.1-mini
+OPENROUTER_API_KEY=
+OPENAI_MODEL=openai/gpt-4.1-mini
 OPENAI_BASE_URL=https://api.openai.com/v1/chat/completions
 HERMES_GERAL_PORT=5060
 TELEGRAM_BOT_TOKEN=

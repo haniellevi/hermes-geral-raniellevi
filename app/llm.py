@@ -28,12 +28,18 @@ def offline_response(_: str) -> str:
 
 
 def generate_response(message: str) -> str:
-    api_key = env("OPENAI_API_KEY")
+    api_key = env("OPENAI_API_KEY") or env("OPENROUTER_API_KEY")
     if not api_key:
         return offline_response(message)
 
-    model = env("OPENAI_MODEL", "gpt-4.1-mini")
-    url = env("OPENAI_BASE_URL", "https://api.openai.com/v1/chat/completions")
+    using_openrouter = bool(env("OPENROUTER_API_KEY")) and not env("OPENAI_API_KEY")
+    model = env("OPENAI_MODEL", "openai/gpt-4.1-mini" if using_openrouter else "gpt-4.1-mini")
+    url = env(
+        "OPENAI_BASE_URL",
+        "https://openrouter.ai/api/v1/chat/completions" if using_openrouter else "https://api.openai.com/v1/chat/completions",
+    )
+    if not url.rstrip("/").endswith("/chat/completions"):
+        url = url.rstrip("/") + "/chat/completions"
 
     history = []
     for item in recent_messages():
@@ -57,6 +63,8 @@ def generate_response(message: str) -> str:
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
+            "HTTP-Referer": "https://github.com/haniellevi/hermes-geral-raniellevi",
+            "X-Title": "Hermes Geral Raniel Levi",
         },
         method="POST",
     )
