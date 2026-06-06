@@ -57,6 +57,12 @@ class HermesGeralRoutingTest(unittest.TestCase):
         os.environ["HERMES_GERAL_DEV_MODEL"] = "gemini-3.5-flash"
         self.assertEqual(selected_gemini_model("/dev revisar arquitetura supabase"), "gemini-3.5-flash")
 
+    def test_knowledge_accepts_query(self):
+        from app.knowledge import read_knowledge
+
+        text = read_knowledge("codex hermes")
+        self.assertIn("Hermes Geral", text)
+
 
 if __name__ == "__main__":
     unittest.main()

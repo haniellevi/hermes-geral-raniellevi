@@ -9,13 +9,13 @@ from .db import recent_messages
 from .knowledge import read_knowledge
 
 
-def build_system_prompt() -> str:
+def build_system_prompt(message: str = "") -> str:
     return (
         "Voce e o Hermes Geral, agente principal de desenvolvimento do usuario. "
         "Responda em portugues do Brasil, com tom tecnico, direto e pragmatico. "
         "Nao misture dados do Hermes Geral com o Hermes Pastoral. "
         "Use o conhecimento abaixo como fonte de verdade.\n\n"
-        f"{read_knowledge()}"
+        f"{read_knowledge(message)}"
     )
 
 
@@ -78,7 +78,7 @@ def gemini_response(message: str, api_key: str) -> str:
 
     payload = {
         "systemInstruction": {
-            "parts": [{"text": build_system_prompt()}],
+            "parts": [{"text": build_system_prompt(message)}],
         },
         "contents": [
             *history,
@@ -126,7 +126,7 @@ def openai_compatible_response(message: str, api_key: str) -> str:
     payload = {
         "model": model,
         "messages": [
-            {"role": "system", "content": build_system_prompt()},
+            {"role": "system", "content": build_system_prompt(message)},
             *history,
             {"role": "user", "content": message},
         ],

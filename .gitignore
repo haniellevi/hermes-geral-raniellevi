@@ -7,3 +7,4 @@ venv/
 database/*.db
 database/*.db-*
 *.log
+conhecimento/codex_chats/
