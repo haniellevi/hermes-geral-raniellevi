@@ -45,6 +45,18 @@ class HermesGeralRoutingTest(unittest.TestCase):
         self.assertTrue(is_allowed_telegram_chat("123"))
         self.assertFalse(is_allowed_telegram_chat("789"))
 
+    def test_common_request_uses_common_gemini_model(self):
+        from app.llm import selected_gemini_model
+
+        os.environ["HERMES_GERAL_COMMON_MODEL"] = "gemini-2.5-flash"
+        self.assertEqual(selected_gemini_model("qual e a pauta de hoje?"), "gemini-2.5-flash")
+
+    def test_development_request_uses_dev_gemini_model(self):
+        from app.llm import selected_gemini_model
+
+        os.environ["HERMES_GERAL_DEV_MODEL"] = "gemini-2.5-pro"
+        self.assertEqual(selected_gemini_model("/dev revisar arquitetura supabase"), "gemini-2.5-pro")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -39,6 +39,10 @@ Copie `.env.example` para `.env` e configure:
 ```env
 HERMES_GERAL_OWNER_PHONES=89994315927,5589994315927
 HERMES_GERAL_DB_PATH=database/hermes_geral.db
+GEMINI_API_KEY=
+GOOGLE_API_KEY=
+HERMES_GERAL_COMMON_MODEL=gemini-2.5-flash
+HERMES_GERAL_DEV_MODEL=gemini-2.5-pro
 OPENAI_API_KEY=
 OPENROUTER_API_KEY=
 OPENAI_MODEL=openai/gpt-4.1-mini
