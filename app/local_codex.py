@@ -67,7 +67,7 @@ def codex_command() -> str:
 
 
 def codex_model() -> str:
-    return env("HERMES_CODEX_MODEL", "")
+    return env("HERMES_CODEX_MODEL", "gpt-5.4")
 
 
 def run_codex(request: CodexRequest) -> str:
@@ -83,14 +83,14 @@ def run_codex(request: CodexRequest) -> str:
         "exec",
         "-c",
         "model_reasoning_effort=high",
+        "-m",
+        codex_model(),
         "-C",
         request.workdir,
-        "--full-auto",
+        "--sandbox",
+        "workspace-write",
         request.prompt,
     ]
-    model = codex_model()
-    if model:
-        command[4:4] = ["-m", model]
     completed = subprocess.run(
         command,
         text=True,
@@ -98,6 +98,9 @@ def run_codex(request: CodexRequest) -> str:
         timeout=timeout,
         check=False,
     )
+    if completed.returncode == 0 and completed.stdout.strip():
+        return completed.stdout.strip()[-3500:]
+
     output = "\n".join(part for part in [completed.stdout.strip(), completed.stderr.strip()] if part)
     if not output:
         output = f"Codex finalizou sem saida. Codigo: {completed.returncode}"

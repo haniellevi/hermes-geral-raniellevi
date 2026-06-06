@@ -61,7 +61,7 @@ Aliases aceitos:
 O Hermes chama:
 
 ```powershell
-codex exec -c model_reasoning_effort=high -C "<pasta-do-projeto>" --full-auto "<pedido>"
+codex exec -c model_reasoning_effort=high -m gpt-5.4 -C "<pasta-do-projeto>" --sandbox workspace-write "<pedido>"
 ```
 
 Se aparecer `401 Unauthorized`, o Codex CLI local precisa de login:
@@ -76,6 +76,11 @@ Se aparecer erro de modelo nao suportado, ajuste o modelo do Codex CLI ou defina
 ```env
 HERMES_CODEX_MODEL=modelo-que-funciona-no-seu-codex-cli
 ```
+
+Neste PC, os modelos testados e funcionais via Codex Desktop CLI foram:
+
+- `gpt-5.4`
+- `gpt-5.4-mini`
 
 ## Observacao
 
