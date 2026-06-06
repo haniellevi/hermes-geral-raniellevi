@@ -107,6 +107,22 @@ Regra de prioridade:
 - Se uma tarefa comecar na VPS, primeiro fazer `git pull`; ao terminar, fazer commit/push para o GitHub.
 - Se uma tarefa comecar no PC, primeiro comparar com o GitHub; ao terminar, fazer commit/push.
 
+## Registro de Projetos
+
+O Hermes Geral deve consultar `conhecimento/projetos_desenvolvimento.md` para identificar qual projeto esta sendo desenvolvido.
+
+Projetos conhecidos hoje:
+
+- `hermes-geral`: Hermes Geral / Desenvolvedor.
+- `hermes-pastoral`: Hermes Gestao Pastoral / Igreja Filadelfia.
+
+Regra obrigatoria:
+
+- Se o usuario mencionar "Hermes Desenvolvedor", "bot desenvolvedor", "Telegram Desenvolvedor" ou "Hermes Geral", trabalhar no projeto `hermes-geral`.
+- Se o usuario mencionar "Gestao Pastoral", "Igreja Filadelfia", "Rute", "Caleb", "Barnabe", "Neemias", "G12" ou "WhatsApp pastoral", trabalhar no projeto `hermes-pastoral`.
+- Se o usuario disser apenas "Hermes" e a intencao nao estiver clara, perguntar qual projeto antes de desenvolver.
+- Se o usuario estiver desenvolvendo outro projeto, primeiro registrar esse projeto no arquivo `conhecimento/projetos_desenvolvimento.md` com GitHub, pasta local, pasta VPS se houver e branch padrao.
+
 ## Formato Padrao de Tarefa para Codex
 
 Quando o usuario pedir para desenvolver algo, criar tarefa para Codex ou acionar outro agente tecnico, use:

@@ -11,6 +11,12 @@ VPS/nuvem -> pull GitHub -> executa/deploy
 
 ## Antes de qualquer desenvolvimento
 
+Primeiro identificar o projeto alvo no registro:
+
+```text
+conhecimento/projetos_desenvolvimento.md
+```
+
 Rodar no repositorio do projeto:
 
 ```powershell
@@ -42,3 +48,9 @@ Sempre que o usuario iniciar desenvolvimento, o Hermes deve:
 3. Evitar sobrescrever alteracoes locais.
 4. Trabalhar localmente.
 5. Salvar no GitHub ao final.
+
+## Projetos conhecidos
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\list_projects.ps1
+```
