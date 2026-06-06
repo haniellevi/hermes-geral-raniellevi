@@ -24,7 +24,9 @@ ENV = load_env()
 
 
 def env(name: str, default: str = "") -> str:
-    return os.environ.get(name) or ENV.get(name) or default
+    if name in os.environ:
+        return os.environ[name]
+    return ENV.get(name) or default
 
 
 def normalize_phone(value: object) -> str:

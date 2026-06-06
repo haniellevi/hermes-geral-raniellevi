@@ -11,6 +11,11 @@ services:
       - ./conhecimento:/app/conhecimento
       - ./database:/app/database
       - ./tasks:/app/tasks
+    networks:
+      default:
+      hermes-agents:
+        aliases:
+          - hermes-geral-api
 
   hermes-geral-telegram:
     build: .
@@ -23,3 +28,12 @@ services:
       - ./conhecimento:/app/conhecimento
       - ./database:/app/database
       - ./tasks:/app/tasks
+    networks:
+      default:
+      hermes-agents:
+        aliases:
+          - hermes-geral-telegram
+
+networks:
+  hermes-agents:
+    external: true

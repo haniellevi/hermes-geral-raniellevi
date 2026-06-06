@@ -9,12 +9,14 @@ class HermesGeralRoutingTest(unittest.TestCase):
         os.environ["HERMES_GERAL_OWNER_PHONES"] = "89994315927,5589994315927"
         os.environ["HERMES_GERAL_DB_PATH"] = os.path.join(self.tmpdir.name, "test.db")
         os.environ["OPENAI_API_KEY"] = ""
+        os.environ["TELEGRAM_ALLOWED_CHAT_IDS"] = ""
 
     def tearDown(self):
         self.tmpdir.cleanup()
         os.environ.pop("HERMES_GERAL_OWNER_PHONES", None)
         os.environ.pop("HERMES_GERAL_DB_PATH", None)
         os.environ.pop("OPENAI_API_KEY", None)
+        os.environ.pop("TELEGRAM_ALLOWED_CHAT_IDS", None)
 
     def test_owner_phone_local_format_is_allowed(self):
         from app.config import is_owner_phone
@@ -42,7 +44,6 @@ class HermesGeralRoutingTest(unittest.TestCase):
         os.environ["TELEGRAM_ALLOWED_CHAT_IDS"] = "123,456"
         self.assertTrue(is_allowed_telegram_chat("123"))
         self.assertFalse(is_allowed_telegram_chat("789"))
-        os.environ.pop("TELEGRAM_ALLOWED_CHAT_IDS", None)
 
 
 if __name__ == "__main__":

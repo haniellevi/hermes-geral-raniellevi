@@ -42,7 +42,7 @@ HERMES_GERAL_DB_PATH=database/hermes_geral.db
 OPENAI_API_KEY=
 OPENROUTER_API_KEY=
 OPENAI_MODEL=openai/gpt-4.1-mini
-OPENAI_BASE_URL=https://api.openai.com/v1/chat/completions
+OPENAI_BASE_URL=
 HERMES_GERAL_PORT=5060
 TELEGRAM_BOT_TOKEN=
 TELEGRAM_ALLOWED_CHAT_IDS=
@@ -59,6 +59,12 @@ Validar:
 ```bash
 curl http://localhost:5060/health
 docker compose logs -f hermes-geral-telegram
+```
+
+Conectar na rede compartilhada dos agentes:
+
+```bash
+bash deploy/connect_existing_agents.sh
 ```
 
 ## Bootstrap opcional

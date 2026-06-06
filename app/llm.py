@@ -34,10 +34,10 @@ def generate_response(message: str) -> str:
 
     using_openrouter = bool(env("OPENROUTER_API_KEY")) and not env("OPENAI_API_KEY")
     model = env("OPENAI_MODEL", "openai/gpt-4.1-mini" if using_openrouter else "gpt-4.1-mini")
-    url = env(
-        "OPENAI_BASE_URL",
-        "https://openrouter.ai/api/v1/chat/completions" if using_openrouter else "https://api.openai.com/v1/chat/completions",
-    )
+    base_url = env("OPENAI_BASE_URL")
+    if using_openrouter and (not base_url or "api.openai.com" in base_url):
+        base_url = "https://openrouter.ai/api/v1/chat/completions"
+    url = base_url or ("https://openrouter.ai/api/v1/chat/completions" if using_openrouter else "https://api.openai.com/v1/chat/completions")
     if not url.rstrip("/").endswith("/chat/completions"):
         url = url.rstrip("/") + "/chat/completions"
 
