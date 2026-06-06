@@ -1,0 +1,25 @@
+services:
+  hermes-geral-api:
+    build: .
+    container_name: hermes-geral-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "5060:5060"
+    volumes:
+      - ./conhecimento:/app/conhecimento
+      - ./database:/app/database
+      - ./tasks:/app/tasks
+
+  hermes-geral-telegram:
+    build: .
+    container_name: hermes-geral-telegram
+    restart: unless-stopped
+    command: ["python", "-m", "app.telegram_bot"]
+    env_file:
+      - .env
+    volumes:
+      - ./conhecimento:/app/conhecimento
+      - ./database:/app/database
+      - ./tasks:/app/tasks
