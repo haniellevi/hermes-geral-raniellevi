@@ -54,8 +54,8 @@ class HermesGeralRoutingTest(unittest.TestCase):
     def test_development_request_uses_dev_gemini_model(self):
         from app.llm import selected_gemini_model
 
-        os.environ["HERMES_GERAL_DEV_MODEL"] = "gemini-2.5-pro"
-        self.assertEqual(selected_gemini_model("/dev revisar arquitetura supabase"), "gemini-2.5-pro")
+        os.environ["HERMES_GERAL_DEV_MODEL"] = "gemini-3-flash-preview"
+        self.assertEqual(selected_gemini_model("/dev revisar arquitetura supabase"), "gemini-3-flash-preview")
 
 
 if __name__ == "__main__":
