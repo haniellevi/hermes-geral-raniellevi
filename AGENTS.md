@@ -75,6 +75,38 @@ Pastas recomendadas:
 
 Nao usar o banco `database/pastoral.db` do Hermes Pastoral para tarefas gerais.
 
+## Regra de Desenvolvimento Local + GitHub
+
+O fluxo padrao de desenvolvimento dos projetos do usuario e:
+
+```text
+PC local -> desenvolvimento -> commit -> push GitHub
+VPS/nuvem -> pull GitHub -> execucao/deploy
+```
+
+Antes de iniciar qualquer tarefa de desenvolvimento, o Hermes Geral deve verificar se o GitHub esta mais atualizado que a pasta local.
+
+Procedimento obrigatorio:
+
+1. Verificar branch atual.
+2. Rodar `git fetch --all --prune`.
+3. Comparar `HEAD` local com upstream remoto.
+4. Se o remoto estiver na frente, fazer `git pull --ff-only` antes de editar.
+5. Se o local estiver na frente, avisar que ha commits locais ainda nao enviados.
+6. Se houver divergencia, parar e pedir decisao antes de editar.
+7. Verificar `git status --short` para nao sobrescrever alteracoes locais do usuario.
+8. Trabalhar nos arquivos locais.
+9. Rodar testes/validacoes adequadas.
+10. Commitar e enviar para o GitHub quando a tarefa estiver concluida e aprovada.
+
+Regra de prioridade:
+
+- Desenvolvimento principal acontece no PC local.
+- A VPS deve puxar o estado salvo no GitHub.
+- Nada importante deve ficar somente na VPS ou somente no computador sem commit/push.
+- Se uma tarefa comecar na VPS, primeiro fazer `git pull`; ao terminar, fazer commit/push para o GitHub.
+- Se uma tarefa comecar no PC, primeiro comparar com o GitHub; ao terminar, fazer commit/push.
+
 ## Formato Padrao de Tarefa para Codex
 
 Quando o usuario pedir para desenvolver algo, criar tarefa para Codex ou acionar outro agente tecnico, use:

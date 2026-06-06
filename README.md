@@ -61,3 +61,19 @@ Na VPS, ele roda pelo Docker Compose como:
 ```text
 hermes-geral-telegram
 ```
+
+## Fluxo de desenvolvimento
+
+O fluxo padrao e trabalhar no PC local e usar o GitHub como fonte de sincronizacao com VPS/nuvem.
+
+Antes de iniciar qualquer desenvolvimento:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\check_git_freshness.ps1 -Path "CAMINHO_DO_PROJETO"
+```
+
+Detalhes:
+
+```text
+docs/FLUXO_DEV_LOCAL_GITHUB.md
+```
