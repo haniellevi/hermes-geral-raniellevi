@@ -1,0 +1,26 @@
+[Unit]
+Description=Hermes Geral - Web Navigator Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/hermes-geral/scripts
+
+# Variáveis de ambiente do serviço
+# SERPER_API_KEY é opcional — sem ela, usa apenas DuckDuckGo (gratuito)
+EnvironmentFile=/opt/hermes-geral/.env
+Environment=SERVICE_PORT=5055
+Environment=SERVICE_HOST=127.0.0.1
+
+ExecStart=/opt/hermes-geral/venv/bin/python web_navigator_service.py
+
+# Reinicialização automática em caso de falha
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=web_navigator
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+# web_navigator — Dependências
+# Motor primário (gratuito, sem chave de API):
+duckduckgo-search>=6.2.0
+
+# Framework HTTP:
+flask>=3.0.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=5.0.0
+
+# Motor fallback Google via Serper.dev (opcional, barato):
+# Não requer biblioteca extra — usa requests direto na API REST
